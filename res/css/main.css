@@ -5,6 +5,23 @@
   background-size: cover;
 }
 
+.menu__logotype
+{
+  font-size: 26px;
+  font-weight: 400;
+  font-family: 'Lora', serif;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.menu_item
+{
+  font-size: 12px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.7;
+  color: #ffffff;
+}
+
 .top-block__title
 {
   font-size: 50px;
@@ -28,7 +45,80 @@
   font-family: 'Oxygen', sans-serif;
   line-height: 1.5;
   color: #ffffff;
-  background-color: coral;
+  background-color: #DD783F;
+  border-radius: 3px;
+  border-style: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.submenu__item
+{
+  font-size: 14px;
+  font-family: 'Lora', serif;
+  line-height: 1.4;
+  color: #768088;
+}
+
+.section__title
+{
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.35;
+  color: #2E2E2E;
+}
+
+.featured-posts__the-road-ahead
+{
+  background: url('../images/the-road-ahead.jpg');
+  background-repeat: no-repeat;
+}
+
+.featured-posts__from-top-down
+{
+  background: url('../images/from-top-down.jpg');
+  background-repeat: no-repeat;
+}
+
+.featured-posts_item-title
+{
+  font-size: 27px;
+  font-weight: 400;
+  font-family: 'Lora', serif;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.featured-posts_item-quote
+{
+  font-size: 14px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.featured-posts_item-text
+{
+  font-size: 12px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 2.9;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.featured-posts_item-tag
+{
+  font-size: 12px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 2.9;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #DD783F;
   border-radius: 2px;
   border-style: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

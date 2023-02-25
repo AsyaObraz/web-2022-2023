@@ -1,0 +1,41 @@
+.menu__logotype
+{
+  font-size: 26px;
+  font-weight: 400;
+  font-family: 'Lora', serif;
+  line-height: 1;
+  color: #2E2E2E;
+}
+
+.menu_item
+{
+  font-size: 12px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.7;
+  color: #2E2E2E;
+}
+
+.top-block__title
+{
+  font-size: 50px;
+  font-weight: 400;
+  font-family: 'Lora', serif;
+  line-height: 1;
+  color: #2E2E2E;
+}
+
+.top-block__text
+{
+  font-size: 17px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.18;
+  color: rgba(46, 46, 46, 0.63);
+}
+
+.article-text
+{
+  font-size: 24px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.46;
+  color: #101315;
+}
