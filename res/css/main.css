@@ -1,0 +1,35 @@
+.top-block
+{
+  background: url('../images/top-block-background.jpg') #000000;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.top-block__title
+{
+  font-size: 50px;
+  font-weight: 400;
+  font-family: 'Lora', serif;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.top-block__text
+{
+  font-size: 17px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.18;
+  color: rgba(255, 255, 255, 0.63);
+}
+
+.top-block__button
+{
+  font-size: 13px;
+  font-family: 'Oxygen', sans-serif;
+  line-height: 1.5;
+  color: #ffffff;
+  background-color: coral;
+  border-radius: 2px;
+  border-style: none;
+}
+
