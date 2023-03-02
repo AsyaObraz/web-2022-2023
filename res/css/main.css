@@ -106,4 +106,6 @@
   background: url('../images/footer-block-background.jpg') #000000;
   background-repeat: no-repeat;
   background-size: cover;
+  width: 1440px;
+  height: 89px;
 }

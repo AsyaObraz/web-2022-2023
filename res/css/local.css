@@ -23,7 +23,7 @@
   color: rgba(46, 46, 46, 0.63);
 }
 
-.text
+.main-block__text
 {
   font: 400 24px/1.46 'Oxygen';
   color: #101315;
@@ -38,10 +38,13 @@
 
 .menu__logo_color
 {
+  font: 400 26px/1 'Lora';
   color: #ffffff;
 }
 
 .menu__item_color
 {
+  font: 400 12px/1.6 'Oxygen';
   color: #ffffff;
+  text-decoration: 0;
 }
