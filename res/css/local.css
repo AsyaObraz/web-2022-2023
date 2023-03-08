@@ -21,7 +21,6 @@
 {
   font: 400 17px/1.18 'Oxygen';
   color: rgba(46, 46, 46, 0.63);
-  
 }
 
 .main-block__text
@@ -35,8 +34,6 @@
   background: url('../images/footer-block-background.jpg') #000000;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 1440px;
-  height: 89px;
 }
 
 .menu__logo_color
@@ -48,6 +45,6 @@
 .menu__item_color
 {
   font: 400 12px/1.6 'Oxygen';
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: 0;
 }
