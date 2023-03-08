@@ -58,25 +58,25 @@
   color: #2E2E2E;
 }
 
-.main-block__title
+.post__title
 {
   font: 400 27px/1.1 "Lora";
   color: #000000;
 }
 
-.main-block__text
+.post__text
 {
   font: 400 14px/1.8 "Oxygen";
   color: #000000;
 }
 
-.main-block__caption
+.post__caption
 {
   font: 400 12px/2.9 "Oxygen";
   color: #000000;
 }
 
-.main-block__section-heading
+.post__section-heading
 {
   font: 400 12px/2.9 "Oxygen";
   color: rgba(255, 255, 255, 0.7);
@@ -89,16 +89,22 @@
   padding-right: 10px;
 }
 
-.main-block__heading
+.article__heading
 {
   font: 400 16px/1.3 "Lora";
   color: #101315;
 }
 
-.body__description
+.article__description
 {
   font: 400 13px/1.46 "Oxygen";
   color: #7A7A7A;
+}
+
+.article__caption
+{
+  font: 400 12px/2.9 "Oxygen";
+  color: #000000;
 }
 
 .low-block
