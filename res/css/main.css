@@ -1,6 +1,6 @@
 .top-block
 {
-  background: url('../images/top-block-background.jpg') #000000;
+  background: #000000 url('../images/top-block-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   width: 1440px;
@@ -37,12 +37,8 @@
   font: 400 13px/1.5 "Oxygen";
   color: #ffffff;
   background-color: #DD783F;
-  border-radius: 3px;
-  border-style: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  border: 3px none;
+  padding: 10px 20px;
 }
 
 .submenu__item
@@ -52,41 +48,80 @@
   text-decoration: 0;
 }
 
+.main-block
+{
+  background: #F7F7F7;
+}
+
 .main-block__name
 {
   font: 400 20px/1.35 "Oxygen";
   color: #2E2E2E;
 }
 
-.post__title
+.favorites__the-road-ahead
+{
+  background: #000000 url('../images/the-road-ahead.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 460px;
+  height: 280px;
+}
+
+.favorites__from-top-down
+{
+  background: #000000 url('../images/from-top-down.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 460px;
+  height: 280px;
+}
+
+.the-road-ahead__title
 {
   font: 400 27px/1.1 "Lora";
   color: #ffffff;
 }
 
-.post__text
+.the-road-ahead__text
 {
   font: 400 14px/1.8 "Oxygen";
   color: rgba(255, 255, 255, 0.7);
 }
 
-.post__caption
+.from-top-down__section-heading
+{
+  font: 400 12px/2.9 "Oxygen";
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #DD783F;
+  border-radius: 2px none;
+  padding: 10px 20px;
+}
+
+.from-top-down__title
+{
+  font: 400 27px/1.1 "Lora";
+  color: #ffffff;
+}
+
+.from-top-down__text
+{
+  font: 400 14px/1.8 "Oxygen";
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.caption__text
 {
   font: 400 12px/2.9 "Oxygen";
   color: rgba(255, 255, 255, 0.7);
 }
 
-.post__section-heading
+.latest__article
 {
-  font: 400 12px/2.9 "Oxygen";
-  color: rgba(255, 255, 255, 0.7);
-  background-color: #DD783F;
-  border-radius: 2px;
-  border-style: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
+  background: #ffffff;
+  width: 296px;
+  height: 291px;
+  margin-bottom: 20px;
 }
 
 .article__heading
@@ -103,15 +138,21 @@
 
 .article__caption
 {
+  background: #FCFCFC;
+  width: 296px;
+  height: 48px;
+  border-top: 1px solid #EFEFEF;
+}
+
+.caption__info
+{
   font: 400 12px/2.9 "Oxygen";
   color: #000000;
 }
 
-.low-block
+.menu_with-background
 {
-  background: url('../images/footer-block-background.jpg') #000000;
+  background: #000000 url('../images/low-block-background.png');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 1440px;
-  height: 89px;
 }
