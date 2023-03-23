@@ -37,8 +37,10 @@
   font: 400 13px/1.5 "Oxygen";
   color: #ffffff;
   background-color: #DD783F;
-  border: 3px none;
-  padding: 10px 20px;
+  width: 167px;
+  height: 44px;
+  border-radius: 3px;
+  border-style: none;
 }
 
 .submenu
@@ -111,7 +113,7 @@
   font: 400 12px/2.9 "Oxygen";
   color: rgba(255, 255, 255, 0.7);
   background-color: #DD783F;
-  border-radius: 2px none;
+  border-radius: 3px none;
   padding: 10px 20px;
 }
 
@@ -167,9 +169,46 @@
   color: #000000;
 }
 
+.main-block__feedback
+{
+  background: #000000 url('../images/feedback-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1440px;
+  height: 378px;
+}
+
+.feedback__title
+{
+  font: 400 25px/1.2 "Oxygen";
+  color: #EFEFEF;
+}
+
+.feedback__email
+{
+  font: 400 12px/1.16 "Roboto";
+  color: #817F83;
+  background-color: #FFFFFF;
+  width: 375px;
+  height: 50px;
+  border-radius: 3px;
+  border-style: none;
+}
+
+.feedback__button
+{
+  font: 400 12px/1.16 "Roboto";
+  color: #F8F8F8; 
+  background-color: rgba(255, 255, 255, 0.28);
+  width: 125px;
+  height: 50px;
+  border-radius: 3px;
+  border-style: none;
+}
+
 .menu_with-background
 {
-  background: #000000 url('../images/low-block-background.png');
+  background: #000000 url('../images/footer-background.png');
   background-repeat: no-repeat;
   background-size: cover;
   width: 1440px;
