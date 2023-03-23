@@ -1,0 +1,65 @@
+.menu__logo
+{
+  font: 400 26px/1 'Lora';
+  color: #2E2E2E;
+}
+
+.menu__item
+{
+  font: 400 12px/1.6 'Oxygen';
+  color: #2E2E2E;
+  text-decoration: 0;
+}
+
+.content__title
+{
+  font: 400 50px/1 'Lora';
+  color: #2E2E2E;
+}
+
+.content__text
+{
+  font: 400 17px/1.18 'Oxygen';
+  color: rgba(46, 46, 46, 0.63);
+}
+
+.main-block
+{
+  background-color: #F7F7F7;
+  width: 1440px;
+  height: 1706px;
+}
+
+.main-block__article
+{
+  width: 960px;
+  height: 1431px;
+}
+
+.article__text
+{
+  font: 400 24px/1.46 'Oxygen';
+  color: #101315;
+}
+
+.menu_with-background
+{
+  background: #000000 url('../images/low-block-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1440px;
+  height: 89px;
+}
+
+.menu__logo_color
+{
+  font: 400 26px/1 'Lora';
+  color: #ffffff;
+}
+
+.menu__item_color
+{
+  font: 400 12px/1.6 'Oxygen';
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: 0;
+}
