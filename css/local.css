@@ -1,10 +1,10 @@
-.menu__logo
+.nav__logo
 {
   font: 400 26px/1 'Lora';
   color: #2E2E2E;
 }
 
-.menu__item
+.nav__item
 {
   font: 400 12px/1.6 'Oxygen';
   color: #2E2E2E;
@@ -42,22 +42,73 @@
   color: #101315;
 }
 
-.menu_with-background
+.feedback
 {
   background: #000000 url('../images/footer-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 1440px;
+  height: 378px;
+}
+
+.feedback__title
+{
+  font: 400 25px/1.2 "Oxygen";
+  color: #EFEFEF;
+}
+
+.feedback__title::after
+{
+    content: '';
+    display: block;
+    margin-top: 18px;
+    border-top: 1px solid #DEDEDE;
+    border-radius: 0;
+    width: 180px;
+}
+
+.feedback__email
+{
+  font: 400 12px/1.16 "Roboto";
+  color: #817F83;
+  background: #FFFFFF;
+  width: 305px;
+  border-radius: 3px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 35px;
+  padding-right: 35px;
+  width: 305px;
+  border: none;
+}
+
+.feedback__button
+{
+  font: 400 12px/1.16 "Roboto";
+  color: #F8F8F8; 
+  background-color: rgba(255, 255, 255, 0.28);
+  width: 125px;
+  height: 50px;
+  border-radius: 3px;
+  border-style: none;
+}
+
+.nav_with-background
+{
+  background: #000000 url('../images/menu-background.png');
   background-repeat: no-repeat;
   background-size: cover;
   width: 1440px;
   height: 89px;
 }
 
-.menu__logo_color
+.nav__logo_color
 {
   font: 400 26px/1 'Lora';
   color: #ffffff;
 }
 
-.menu__item_color
+.nav__item_color
 {
   font: 400 12px/1.6 'Oxygen';
   color: rgba(255, 255, 255, 0.6);
