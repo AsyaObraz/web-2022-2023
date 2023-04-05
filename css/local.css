@@ -1,3 +1,23 @@
+.content
+{
+  width: 100%;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  text-align: center;
+}
+
+.content__nav
+{
+  width: 940px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 0 0;
+  padding: 1px 250px 0;
+}
+
 .nav__logo
 {
   font: 400 26px/1 'Lora';
@@ -8,6 +28,7 @@
 {
   font: 400 12px/1.6 'Oxygen';
   color: #2E2E2E;
+  padding: 10px 20px;
   text-decoration: 0;
 }
 
@@ -15,56 +36,75 @@
 {
   font: 400 50px/1 'Lora';
   color: #2E2E2E;
+  margin: 120px 0 0 0;
 }
 
 .content__text
 {
   font: 400 17px/1.18 'Oxygen';
   color: rgba(46, 46, 46, 0.63);
+  margin: 20px 0 110px 0;
+}
+
+.content__photo
+{
+  height: 534px;
+  width: 100%;
 }
 
 .main-block
 {
   background-color: #F7F7F7;
-  width: 1440px;
-  height: 1706px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.main-block__article
-{
-  width: 960px;
-  height: 1431px;
-}
-
-.article__text
+.article
 {
   font: 400 24px/1.46 'Oxygen';
   color: #101315;
+  width: 960px;
+  height: 1431px;
+  padding: 140px 240px 135px 240px;
 }
 
-.feedback
+.footer
 {
   background: #000000 url('../images/footer-background.png');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 1440px;
-  height: 378px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .feedback__title
 {
   font: 400 25px/1.2 "Oxygen";
   color: #EFEFEF;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 81px;
+  flex-basis: 100%;
+  flex-shrink: 0;
 }
 
 .feedback__title::after
 {
-    content: '';
-    display: block;
-    margin-top: 18px;
-    border-top: 1px solid #DEDEDE;
-    border-radius: 0;
-    width: 180px;
+  content:"";
+  display: block;
+  margin: 17px 0 20px 0;
+  width: 188px;
+  height: 1px;
+  background-color: #DEDEDE;
+}
+
+.feedback__form
+{
+  display: flex;
+  align-self: center;
+  margin: 0 0 90px 0;
 }
 
 .feedback__email
@@ -72,14 +112,11 @@
   font: 400 12px/1.16 "Roboto";
   color: #817F83;
   background: #FFFFFF;
-  width: 305px;
-  border-radius: 3px;
-  padding-top: 18px;
-  padding-bottom: 18px;
-  padding-left: 35px;
-  padding-right: 35px;
-  width: 305px;
+  width: 375px;
+  height: 50px;
+  border-radius: 3px 0 0 3px;
   border: none;
+  padding: 0 0 0 35px;
 }
 
 .feedback__button
@@ -89,17 +126,35 @@
   background-color: rgba(255, 255, 255, 0.28);
   width: 125px;
   height: 50px;
-  border-radius: 3px;
+  border-radius: 0 3px 3px 0;
   border-style: none;
+}
+
+.footer__nav
+{
+  height: 89px;
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 100vw rgba(35, 47, 56, 0.6);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  margin: 28px 0 0 0;
+  padding: 28px 250px 27px;
 }
 
 .nav_with-background
 {
-  background: #000000 url('../images/menu-background.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 1440px;
   height: 89px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 100vw rgba(35, 47, 56, 0.6);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 28px 0 0 0;
 }
 
 .nav__logo_color
@@ -112,5 +167,6 @@
 {
   font: 400 12px/1.6 'Oxygen';
   color: rgba(255, 255, 255, 0.6);
+  padding: 10px 20px;
   text-decoration: 0;
 }

@@ -7,8 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="top-block">
-    <div class="top-block__nav nav">
+  <header class="top">
+    <div class="top__nav nav">
       <span class="nav__logo">Escape.</span>
       <nav class="nav__items">
         <a href="#" class="nav__item">HOME</a>
@@ -17,9 +17,9 @@
         <a href="#" class="nav__item">CONTACT</a>
       </nav>
     </div>
-    <h1 class="top-block-title">Let's do it together.</h1>
-    <p class="top-block-text">We travel the world in search of stories. Come along for the ride.</p>
-    <button class="top-block-button">View Latest Posts</button>
+    <h1 class="top__title">Let's do it together.</h1>
+    <p class="top__text">We travel the world in search of stories. Come along for the ride.</p>
+    <button class="top__button">View Latest Posts</button>
   </header>
   <nav class="submenu">
     <a href="#" class="submenu__item">Nature</a>
@@ -117,12 +117,12 @@
     </div>
   </div>  
   <footer class="footer">
-    <div class="feedback">
-      <h2 class="feedback__title">Stay in Touch</h2>
-      <span class="feedback__email">Enter your email address</span>
-      <button class="feedback__button">Submit</button>
-    </div>
-    <div class="nav nav_with-background">
+    <h2 class="feedback__title">Stay in Touch</h2>
+    <form class="feedback__form" action="#">
+      <input class="feedback__email" type="email" name="email" placeholder="Enter your email address">
+      <input class="feedback__button" type="submit" value="submit">
+    </form>
+    <div class="footer__nav nav">
       <span class="nav__logo">Escape.</span>
       <nav class="nav__items">
         <a href="#" class="nav__item">HOME</a>

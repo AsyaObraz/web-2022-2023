@@ -7,20 +7,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="top-block">
-    <span class="nav__logo">Escape.</span>
-    <nav class="nav__items">
-      <a href="#" class="nav__item">HOME</a>
-      <a href="#" class="nav__item">CATEGORIES</a>
-      <a href="#" class="nav__item">ABOUT</a>
-      <a href="#" class="nav__item">CONTACT</a>
-    </nav>
-  </header>
-  <div class="content">
+  <header class="content">
+    <div class="content__nav nav">
+      <span class="nav__logo">Escape.</span>
+      <nav class="nav__items">
+        <a href="#" class="nav__item">HOME</a>
+        <a href="#" class="nav__item">CATEGORIES</a>
+        <a href="#" class="nav__item">ABOUT</a>
+        <a href="#" class="nav__item">CONTACT</a>
+      </nav>
+    </div>
     <h1 class="content__title">The Road Ahead</h1>
     <p class="content__text">The road ahead might be paved - it might not be.</p>
-    <img src="../res/images/article/the-road-ahead.jpg" alt="Northern lights">
-  </div>
+    <img class="content__photo" src="../res/images/article/the-road-ahead.jpg" alt="Northern lights">
+  </header>
   <article class="main-block">
     <div class="article">
       <p class="article__text">Dark spruce forest frowned on either side the frozen waterway. The trees had been stripped by a recent wind of their white covering of frost, and they seemed to lean towards each other, black and ominous, in the fading light. A vast silence reigned over the land. The land itself was a desolation, lifeless, without movement, so lone and cold that the spirit of it was not even that of sadness. There was a hint in it of laughter, but of a laughter more terrible than any sadness—a laughter that was mirthless as the smile of the sphinx, a laughter cold as the frost and partaking of the grimness of infallibility. It was the masterful and incommunicable wisdom of eternity laughing at the futility of life and the effort of life. It was the Wild, the savage, frozen-hearted Northland Wild.</p>
@@ -30,12 +30,12 @@
     </div>
   </article>
   <footer class="footer">
-    <div class="feedback">
-      <h2 class="feedback__title">Stay in Touch</h2>
-      <span class="feedback__email">Enter your email address</span>
-      <button class="feedback__button">Submit</button>
-    </div>
-    <div class="nav_with-background">
+    <h2 class="feedback__title">Stay in Touch</h2>
+    <form class="feedback__form" action="#">
+      <input class="feedback__email" type="email" name="email" placeholder="Enter your email address">
+      <input class="feedback__button" type="submit" value="submit">
+    </form>
+    <div class="footer__nav nav nav_with-background">
       <span class="nav__logo_color">Escape.</span>
       <nav class="nav__items">
         <a href="#" class="nav__item_color">HOME</a>
