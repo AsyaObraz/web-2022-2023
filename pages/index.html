@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Escape</title>
-  <link href="css/main.css" rel="stylesheet">
+  <link href="static/css/main.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Lora&family=Oxygen&family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -30,90 +30,35 @@
     <a href="#" class="submenu__item">Adventure</a>
   </nav>
   <div class="main">
-    <h2 class="main__name">Featured Posts</h2>
     <div class="main__featured-posts">
-      <div class="main__post post">
-        <h3 class="post__title">The Road Ahead</h3>
-        <p class="post__text">The road ahead might be paved - it might not be.</p>
+      <h2 class="main__name">Featured Posts</h2>
+      {{ range .FeaturedPosts }}
+      <div class="main__post post {{ .ImgModifier }}">
+        <h3 class="post__title">{{ .Title }}</h3>
+        <p class="post__text">{{ .Subtitle }}</p>
         <div class="post__caption caption">
-          <img class="caption__photo" src="../res/images/mat-vogels.png" alt="Mat Vogels">
-          <span class="caption__author">Mat Vogels</span>
-          <span class="caption__text">September 25, 2015</span>
+          <img class="caption__photo" src="{{ .AuthorImg }}" alt="Mat Vogels">
+          <span class="caption__author">{{ .Author }}</span>
+          <span class="caption__text">{{ .PublishDate }}</span>
         </div>
       </div>
-      <div class="main__post post_second">
-        <span class="post__section-heading">ADVENTURE</span>
-        <h3 class="post__title">From Top Down</h3>
-        <p class="post__text">Once a year, go someplace you've never been before.</p>
-        <div class="post__caption caption">
-          <img class="caption__photo" src="../res/images/william-wong.png" alt="William Wong">
-          <span class="caption__author">William Wong</span>
-          <span class="caption__text">September 25, 2015</span>
-        </div>
-      </div>
+      {{ end }}
     </div>
-    <h2 class="main__name">Most Recent</h2>
-    <div class="main__most-recent">  
+  
+    <div class="main__most-recent"> 
+      <h2 class="main__name">Most Recent</h2>
+      {{ range .MostRecentPosts }} 
       <div class="main__article article">
-        <img class="article__photo" src="../res/images/still-standing-tall.jpg" alt="Air baloons">
-        <h4 class="article__heading">Still Standing Tall</h4>
-        <p class="article__description">Life begins at the end of your comfort zone.</p>
+        <img class="article__photo" src="{{ .PostImg }}" alt="Air baloons">
+        <h4 class="article__heading">{{ .Title }}</h4>
+        <p class="article__description">{{ .Subtitle }}</p>
         <div class="article-caption">
-          <img class="article-caption__photo" src="../res/images/william-wong.png" alt="William Wong">
-          <span class="article-caption__author">William Wong</span>
-          <span class="article-caption__text">9/25/2015</span>
+          <img class="article-caption__photo" src="{{ .AuthorImg }}" alt="William Wong">
+          <span class="article-caption__author">{{ .Author }}</span>
+          <span class="article-caption__text">{{ .PublishDate }}</span>
         </div>
       </div>
-      <div class="main__article article">
-        <img class="article__photo" src="../res/images/sunny-side-up.jpg" alt="The Golden Gate Bridge">
-        <h4 class="article__heading">Sunny Side Up</h4>
-        <p class="article__description">No place is ever as bad as they tell you it's going to be.</p>
-        <div class="article-caption">
-          <img class="article-caption__photo" src="../res/images/mat-vogels.png" alt="Mat Vogels">
-          <span class="article-caption__author">Mat Vogels</span>
-          <span class="article-caption__text">9/25/2015</span>
-        </div>
-      </div>
-      <div class="main__article article">
-        <img class="article__photo" src="../res/images/water-falls.jpg" alt="Sunset">
-        <h4 class="article__heading">Water Falls</h4>
-        <p class="article__description">We travel not to escape life, but for life not to escape us.</p>
-        <div class="article-caption">
-          <img class="article-caption__photo" src="../res/images/mat-vogels.png" alt="Mat Vogels">
-          <span class="article-caption__author">Mat Vogels</span>
-          <span class="article-caption__text">9/25/2015</span>
-        </div>  
-      </div>
-      <div class="main__article article">
-        <img class="article__photo" src="../res/images/through-the-mist.jpg" alt="Waves">
-        <h4 class="article__heading">Through the Mist</h4>
-        <p class="article__description">Travel makes you see what a tiny place you occupy in the world.</p>
-        <div class="article-caption">
-          <img class="article-caption__photo" src="../res/images/william-wong.png" alt="William Wong">
-          <span class="article-caption__author">William Wong</span>
-          <span class="article-caption__text">9/25/2015</span>
-        </div>  
-      </div>
-      <div class="main__article article">
-        <img class="article__photo" src="../res/images/awaken-early.jpg" alt="Mist">
-        <h4 class="article__heading">Awaken Early</h4>
-        <p class="article__description">Not all those who wander are lost.</p>
-        <div class="article-caption">
-          <img class="article-caption__photo" src="../res/images/mat-vogels.png" alt="Mat Vogels">
-          <span class="article-caption__author">Mat Vogels</span>
-          <span class="article-caption__text">9/25/2015</span>
-        </div>
-      </div>
-      <div class="main__article article">
-        <img class="article__photo" src="../res/images/try-it-always.jpg" alt="Waterfall">
-        <h4 class="article__heading">Try it Always</h4>
-        <p class="article__description">The world is a book, and those who do not travel read only one page.</p>
-        <div class="article-caption">
-          <img class="article-caption__photo" src="../res/images/mat-vogels.png" alt="Mat Vogels">
-          <span class="article-caption__author">Mat Vogels</span>
-          <span class="article-caption__text">9/25/2015</span>
-        </div>
-      </div>
+      {{ end }}
     </div>
   </div>  
   <footer class="footer">

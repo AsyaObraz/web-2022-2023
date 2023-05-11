@@ -57,7 +57,7 @@ body
   width: 100%;
 }
 
-.main-block
+.main
 {
   background-color: #F7F7F7;
   display: flex;
@@ -66,11 +66,12 @@ body
   padding: 140px 240px 135px 240px;
 }
 
-.article__text
+.article
 {
   font: 400 24px/1.46 'Oxygen';
   color: #101315;
   width: 960px;
+  white-space: pre-line;
 }
 
 .footer
