@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"	
 	"log"
 	"net/http"
 
@@ -20,7 +21,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	dbx := sqlx.NewDB(db, dbDriverName) // Расширяем стандартный клиент к базе
+	dbx := sqlx.NewDb(db, dbDriverName) // Расширяем стандартный клиент к базе
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/home", index(dbx))  // Передаём клиент к базе данных в ф-ию обработчик запроса
@@ -28,8 +29,8 @@ func main() {
 
 	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
-	log.Println("Start server " + port)
-	err := http.ListenAndServe(port, mux)
+	fmt.Println("Start server ")
+	err = http.ListenAndServe(port, mux)
 	if err != nil {
 		log.Fatal(err)
 	}

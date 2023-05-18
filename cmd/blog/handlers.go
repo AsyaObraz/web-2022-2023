@@ -8,24 +8,15 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-type IndexData struct {
-	FeaturedPosts   []featuredPostData
-	MostRecentPosts []mostRecentPostData
+type AllPostsData struct {
+	FeaturedPosts   []postData
+	MostRecentPosts []postData
 }
 
-type featuredPostData struct {
+type postData struct {
 	Title       string  `db:"title"`
 	Subtitle    string  `db:"subtitle"`
 	ImgModifier string  `db:"image_url"`
-	Author      string  `db:"author"`
-	AuthorImg   string  `db:"author_url"`
-	PublishDate string  `db:"publish_date"`
-}
-
-type mostRecentPostData struct {
-	Title       string  `db:"title"`
-	Subtitle    string  `db:"subtitle"`
-	PostImg     string  `db:"image_url"`
 	Author      string  `db:"author"`
 	AuthorImg   string  `db:"author_url"`
 	PublishDate string  `db:"publish_date"`
@@ -40,7 +31,20 @@ type singlePostData struct {
 
 func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		featuredPostData, err := FeaturedPosts(db)
+		featuredPostsData, err := featuredPosts(db)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
+
+		mostRecentPostsData, err := mostRecentPosts(db)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
+
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err)
@@ -48,25 +52,17 @@ func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		ts, err := template.ParseFiles("pages/index.html")
-		if err != nil {
-			http.Error(w, "Internal Server Error", 500)
-			log.Println(err)
-			return
+		allPosts := AllPostsData{
+			FeaturedPosts:   featuredPostsData,
+			MostRecentPosts: mostRecentPostsData,
 		}
 
-		data := IndexData{
-			FeaturedPosts: featuredPosts(),
-			MostRecentPosts: mostRecentPosts(),
-		}
-
-		err = ts.Execute(w, data)
+		err = ts.Execute(w, allPosts)
 		if err != nil {
 		  http.Error(w, "Internal Server Error", 500)
 		  log.Println(err)
 		  return
 	  }
-
-		log.Println("Request completed successfully")
 	}
 }
 
@@ -88,78 +84,52 @@ func post(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func featuredPosts() []featuredPostData {
-	return []featuredPostData{
-		{
-			Title:       "The Road Ahead",
-			Subtitle:    "The road ahead might be paved - it might not be.",
-			ImgModifier: "main__post",
-			Author:      "Mat Vogels",
-			AuthorImg:   "static/images/mat-vogels.png",
-			PublishDate: "September 25, 2015",
-		},
-		{
-			Title:       "From Top Down",
-			Subtitle:    "Once a year, go someplace you've never been before.",
-			ImgModifier: "main__post post_second",
-			Author:      "William Wong",
-			AuthorImg:   "static/images/william-wong.png",
-			PublishDate: "September 25, 2015",
-		},
-	}
+func featuredPosts(db *sqlx.DB) ([]postData, error) {
+	const query = `
+	  SELECT
+			title,
+			subtitle,
+			image_url,
+			author,
+			author_url,
+			publish_date
+		FROM
+			post
+		WHERE featured = 1
+	`
+	var posts []postData
+
+	err := db.Select(&posts, query) //Делаем запрос в базу данных
+	if err != nil {
+		return nil, err
+	} 
+
+	return posts, nil
+
 }
 
-func mostRecentPosts() []mostRecentPostData {
-	return []mostRecentPostData{
-		{
-			Title:       "Still Standing Tall",
-			Subtitle:    "Life begins at the end of your comfort zone.",
-			PostImg:     "static/images/still-standing-tall.jpg",
-			Author:      "William Wong",
-			AuthorImg:   "static/images/william-wong.png",
-			PublishDate: "9/25/2015",
-		},
-		{
-			Title:       "Sunny Side Up",
-			Subtitle:    "No place is ever as bad as they tell you it's going to be.",
-			PostImg:     "static/images/sunny-side-up.jpg",
-			Author:      "Mat Vogels",
-			AuthorImg:   "static/images/mat-vogels.png",
-			PublishDate: "9/25/2015",
-		},
-		{
-			Title:       "Water Falls",
-			Subtitle:    "We travel not to escape life, but for life not to escape us.",
-			PostImg:     "static/images/water-falls.jpg",
-			Author:      "Mat Vogels",
-			AuthorImg:   "static/images/mat-vogels.png",
-			PublishDate: "9/25/2015",
-		},
-		{
-			Title:       "Through the Mist",
-			Subtitle:    "Travel makes you see what a tiny place you occupy in the world.",
-			PostImg:     "static/images/through-the-mist.jpg",
-			Author:      "William Wong",
-			AuthorImg:   "static/images/william-wong.png",
-			PublishDate: "9/25/2015",
-		},
-		{
-			Title:       "Awaken Early",
-			Subtitle:    "Not all those who wander are lost.",
-			PostImg:     "static/images/awaken-early.jpg",
-			Author:      "Mat Vogels",
-			AuthorImg:   "static/images/mat-vogels.png",
-			PublishDate: "9/25/2015",
-		},
-		{
-			Title:       "Try it Always",
-			Subtitle:    "The world is a book, and those who do not travel read only one page.",
-			PostImg:     "static/images/try-it-always.jpg",
-			Author:      "Mat Vogels",
-			AuthorImg:   "static/images/mat-vogels.png",
-			PublishDate: "9/25/2015",
-		},
-	}
+func mostRecentPosts(db *sqlx.DB) ([]postData, error) {
+	const query = `
+	  SELECT
+			title,
+			subtitle,
+			image_url,
+			author,
+			author_url,
+			publish_date
+		FROM
+			post
+		WHERE featured = 0
+	`
+	var posts []postData
+
+	err := db.Select(&posts, query) //Делаем запрос в базу данных
+	if err != nil {
+		return nil, err
+	} 
+
+	return posts, nil
+	
 }
 
 func singlePost() singlePostData {
