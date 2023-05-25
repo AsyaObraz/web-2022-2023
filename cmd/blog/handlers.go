@@ -9,7 +9,8 @@ import (
 )
 
 type indexPage struct {
-	Posts []postData
+	FeaturedPosts   []postData
+	MostRecentPosts []postData
 }
 
 type postData struct {
@@ -31,7 +32,14 @@ type singlePostData struct {
 
 func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		posts, err := posts(db)
+		featured, err := featured(db)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
+
+		mostrecent, err := mostrecent(db)
 		if err != nil {
 			http.Error(w, "Internal Server Error", 500)
 			log.Println(err)
@@ -46,7 +54,8 @@ func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 		}
 
 		data := indexPage{
-			Posts: posts,
+			FeaturedPosts:   featured,
+			MostRecentPosts: mostrecent,
 		}
 
 		err = ts.Execute(w, data)
@@ -60,8 +69,8 @@ func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func posts(db *sqlx.DB) ([]postData, error) {
-	const requestPosts = `
+func featured(db *sqlx.DB) ([]postData, error) {
+	const queryFeatured = `
 		SELECT
 			title,
 			subtitle,
@@ -72,16 +81,42 @@ func posts(db *sqlx.DB) ([]postData, error) {
 			featured
 		FROM
 			post
+		WHERE featured = 1
 	`
 
-	var cards []postData
+	var posts []postData
 
-	err := db.Select(&cards, requestPosts)
+	err := db.Select(&posts, queryFeatured)
 	if err != nil {
 		return nil, err
 	}
 
-	return cards, nil
+	return posts, nil
+}
+
+func mostrecent(db *sqlx.DB) ([]postData, error) {
+	const queryMostRecent = `
+		SELECT
+			title,
+			subtitle,
+			author,
+			author_url,
+			publish_date,
+			image_url,
+			featured
+		FROM
+			post
+		WHERE featured = 0
+	`
+
+	var posts []postData
+
+	err := db.Select(&posts, queryMostRecent)
+	if err != nil {
+		return nil, err
+	}
+
+	return posts, nil
 }
 
 func post(w http.ResponseWriter, r *http.Request) {

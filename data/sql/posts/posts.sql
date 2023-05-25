@@ -14,7 +14,7 @@ VALUES  (
  'Mat Vogels',
  '../static/images/mat-vogels.png',
  'September 25, 2015',
- 'card-big_background-1',
+ '../static/images/the-road-ahead.jpg',
  1
  );
 
@@ -34,7 +34,7 @@ VALUES (
   'Wlliam Wong',
   '../static/images/william-wong.png',
   'September 25, 2015',
-  'card-big_background-2',
+  '../static/images/from-top-down.jpg',
   1
 );
 

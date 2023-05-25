@@ -33,7 +33,7 @@
     <div class="main__featured-posts">
       <h2 class="main__name">Featured Posts</h2>
       {{ range .FeaturedPosts }}
-      <div class="main__post post {{ .ImgModifier }}">
+      <div class="main__post post" style="background-image: url({{ .PostImg }});">
         <h3 class="post__title">{{ .Title }}</h3>
         <p class="post__text">{{ .Subtitle }}</p>
         <div class="post__caption caption">
