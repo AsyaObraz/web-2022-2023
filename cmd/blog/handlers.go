@@ -3,8 +3,10 @@ package main
 import (
 	"html/template"
 	"log"
+	"strconv"
 	"net/http"
 
+	"github.com/gorilla/mux"
 	"github.com/jmoiron/sqlx"
 )
 
@@ -24,10 +26,10 @@ type postData struct {
 }
 
 type singlePostData struct {
-	Title       string
-	Subtitle    string
-	ArticleImg  string
-	Article     string
+	Title       string  `db:"title"`
+	Subtitle    string  `db:"subtitle"`
+	ArticleImg  string  `db:"image_url"`
+	Article     string  `db:"content"`
 }
 
 func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
@@ -72,6 +74,7 @@ func index(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
 func featured(db *sqlx.DB) ([]postData, error) {
 	const queryFeatured = `
 		SELECT
+		  post_id,
 			title,
 			subtitle,
 			author,
@@ -97,6 +100,7 @@ func featured(db *sqlx.DB) ([]postData, error) {
 func mostrecent(db *sqlx.DB) ([]postData, error) {
 	const queryMostRecent = `
 		SELECT
+		  post_id,
 			title,
 			subtitle,
 			author,
@@ -119,12 +123,61 @@ func mostrecent(db *sqlx.DB) ([]postData, error) {
 	return posts, nil
 }
 
-func post(w http.ResponseWriter, r *http.Request) {
-	ts, err := template.ParseFiles("pages/post.html")
+// Получает информацию о конкретном посте из базы данных
+func singlePost(db *sqlx.DB, postID int) (singlePostData, error) {
+	const querySinglePost= `
+		SELECT
+			title, 
+			subtitle, 
+			image_url,
+			content
+		FROM
+			post
+		WHERE id = ?
+	`
+	var posts singlePostData
+	err := db.Get(&posts, querySinglePost, postID)
 	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
-		log.Println(err.Error())
-		return
+		return singlePostData{}, err
+	}
+
+	return posts, nil
+}
+
+func post(db *sqlx.DB) func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+		postIDStr := mux.Vars(r)["postID"] // Получаем orderID в виде строки из параметров урла
+		postID, err := strconv.Atoi(postIDStr) // Конвертируем строку orderID в число
+
+		if err != nil {
+			if err == sql.ErrNoRows {
+				// sql.ErrNoRows возвращается, когда в запросе к базе не было ничего найдено
+				// В таком случае мы возвращем 404 (not found) и пишем в тело, что ордер не найден
+				http.Error(w, "Post not found", 404)
+				log.Println(err)
+				return
+			}
+
+			http.Error(w, "Invalid post id", 403)
+			log.Println(err)
+			return
+		}
+
+		post, err := singlePost(db, postID)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err.Error())
+			return
+		}
+
+		ts, err := template.ParseFiles("pages/post.html")
+
+		err = ts.Execute(w, post)
+		if err != nil {
+			http.Error(w, "Internal Server Error", 500)
+			log.Println(err)
+			return
+		}
 	}
 
 	data := singlePostData{
@@ -138,12 +191,5 @@ func post(w http.ResponseWriter, r *http.Request) {
 		In advance of the dogs, on wide snowshoes, toiled a man. At the rear of the sled toiled a second man. On the sled, in the box, lay a third man whose toil was over,—a man whom the Wild had conquered and beaten down until he would never move nor struggle again. It is not the way of the Wild to like movement. Life is an offence to it, for life is movement; and the Wild aims always to destroy movement. It freezes the water to prevent it running to the sea; it drives the sap out of the trees till they are frozen to their mighty hearts; and most ferociously and terribly of all does the Wild harry and crush into submission man—man who is the most restless of life, ever in revolt against the dictum that all movement must in the end come to the cessation of movement.
 		
 		But at front and rear, unawed and indomitable, toiled the two men who were not yet dead. Their bodies were covered with fur and soft-tanned leather. Eyelashes and cheeks and lips were so coated with the crystals from their frozen breath that their faces were not discernible. This gave them the seeming of ghostly masques, undertakers in a spectral world at the funeral of some ghost. But under it all they were men, penetrating the land of desolation and mockery and silence, puny adventurers bent on colossal adventure, pitting themselves against the might of a world as remote and alien and pulseless as the abysses of space.`,
-	}
-
-	err = ts.Execute(w, data)
-	if err != nil {
-		http.Error(w, "Internal Server Error", 500)
-		log.Println(err.Error())
-		return
 	}
 }

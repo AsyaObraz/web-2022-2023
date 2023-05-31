@@ -1,3 +1,4 @@
+CREATE DATABASE blog;
 USE blog;
 
 CREATE TABLE post
@@ -15,3 +16,9 @@ CREATE TABLE post
 CHARACTER SET = utf8mb4 
 COLLATE utf8mb4_unicode_ci 
 ;
+SHOW TABLES;
+SHOW COLUMNS FROM post;
+SELECT * FROM post;
+
+ALTER TABLE post
+ADD content TEXT NOT NULL;
