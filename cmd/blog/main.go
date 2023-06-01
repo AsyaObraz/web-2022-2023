@@ -24,7 +24,7 @@ func main() {
 
 	dbx := sqlx.NewDb(db, dbDriverName)
 
-	mux := http.NewRouter()
+	mux := mux.NewRouter()
 	mux.HandleFunc("/home", index(dbx))
 	mux.HandleFunc("/post/{postID}", post(dbx))
 

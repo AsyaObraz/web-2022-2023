@@ -34,7 +34,7 @@
       <h2 class="main__name">Featured Posts</h2>
       {{ range .FeaturedPosts }}
       <div class="main__post post" style="background-image: url('{{ .PostImg }}');">
-        <a href="/post/{{ .PostID }}" + post.PostID class="post__title">{{ .Title }}</a>
+        <a href="/post/{{ .ID }}" + post.ID class="post__title">{{ .Title }}</a>
         <p class="post__text">{{ .Subtitle }}</p>
         <div class="post__caption caption">
           <img class="caption__photo" src="{{ .AuthorImg }}" alt="Mat Vogels">
@@ -50,7 +50,7 @@
       {{ range .MostRecentPosts }} 
       <div class="main__article article">
         <img class="article__photo" src="{{ .PostImg }}" alt="Air baloons">
-        <a href="/post/{{ .PostID }}" + post.PostID class="article__heading">{{ .Title }}</a>
+        <a href="/post/{{ .ID }}" + post.ID class="article__heading">{{ .Title }}</a>
         <p class="article__description">{{ .Subtitle }}</p>
         <div class="article-caption">
           <img class="article-caption__photo" src="{{ .AuthorImg }}" alt="William Wong">
